@@ -1,15 +1,23 @@
 import "./App.css";
-import GastosList from "./components/GastosList";
-import GastosForm from "./components/GastosForm";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./features/Screen/Home/Home";
+import LogIn from "./features/Screen/LogIn/LogIn";
+import Navbar from "./features/Gastos/components/NavBar/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <h1>Cuenta Gastos</h1>
-
-      <GastosForm></GastosForm>
-      <hr />
-      <GastosList></GastosList>
+      <BrowserRouter>
+        <Navbar />
+        <div style={{marginTop:40}}>
+          <h1>Cuenta Gastos</h1>
+          <Routes>
+            <Route path="/login" element={<LogIn />} />
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
